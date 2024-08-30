@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/github.io/all-in-1/static/css/main.bed7868e.css",
-    "main.js": "/github.io/all-in-1/static/js/main.3bfce4ba.js",
+    "main.css": "/github.io/all-in-1/static/css/main.18b1855d.css",
+    "main.js": "/github.io/all-in-1/static/js/main.b932013d.js",
     "static/js/453.22428f62.chunk.js": "/github.io/all-in-1/static/js/453.22428f62.chunk.js",
     "index.html": "/github.io/all-in-1/index.html",
-    "main.bed7868e.css.map": "/github.io/all-in-1/static/css/main.bed7868e.css.map",
-    "main.3bfce4ba.js.map": "/github.io/all-in-1/static/js/main.3bfce4ba.js.map",
+    "main.18b1855d.css.map": "/github.io/all-in-1/static/css/main.18b1855d.css.map",
+    "main.b932013d.js.map": "/github.io/all-in-1/static/js/main.b932013d.js.map",
     "453.22428f62.chunk.js.map": "/github.io/all-in-1/static/js/453.22428f62.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bed7868e.css",
-    "static/js/main.3bfce4ba.js"
+    "static/css/main.18b1855d.css",
+    "static/js/main.b932013d.js"
   ]
 }

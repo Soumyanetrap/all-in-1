@@ -1,0 +1,17 @@
+.header {
+    padding: 20px; /* Padding around the text */
+    border-bottom: 2px solid #388E3C; /* Bottom border with a darker green color */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    position: fixed; /* Fixes the header at the top of the viewport */
+    top: 70px; /* Aligns the header to the top of the viewport */
+    left: 0; /* Aligns the header to the left of the viewport */
+    width: 100%; /* Makes the header span the full width of the viewport */
+    z-index: 1000; /* Ensures the header stays above other content */
+    background-color: white; /* Ensures the background is white, or adjust as needed */
+}
+
+.header h2 {
+    margin: 0; /* Remove default margin */
+    font-size: 24px; /* Font size for the heading */
+    font-weight: 600; /* Semi-bold font weight */
+}

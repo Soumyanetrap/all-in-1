@@ -1,0 +1,156 @@
+/* New CSS for the Add Account form and buttons */
+.add_ac-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_ac-main section{
+    width: 100%;
+}
+
+.box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.box-form{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.box h3 {
+    margin-top: 0;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+button.back-button {
+    padding: 10px 20px;
+    background-color: #f44336; /* Red background for back button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+button.back-button:hover {
+    background-color: #c62828; /* Slightly darker red on hover */
+}
+
+/* Style for the unordered list */
+ul {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    max-width: 600px; /* Set a max-width for the list */
+    margin: 0 auto; /* Center the list */
+}
+
+/* Style for each list item */
+li {
+    background-color: #f9f9f9; /* Light grey background for each item */
+    border: 1px solid #ddd; /* Border to separate items */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between items */
+    padding: 15px; /* Padding inside the item */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for list items */
+li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Style for paragraphs inside list items */
+li p {
+    margin: 5px 0; /* Space between paragraphs */
+    font-size: 16px; /* Font size for better readability */
+}
+
+/* Style for labels in paragraphs */
+li p strong {
+    color: #333; /* Darker color for labels */
+    font-weight: bold; /* Bold font for labels */
+}
+
+/* Button styling for form actions */
+button.add-account-button,
+button.cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button.add-account-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+}
+
+button.add-account-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+button.cancel-button {
+    background-color: slategrey; /* Red background color */
+    color: white;
+    width: 50%
+    /* margin-left: 5px; Add space between buttons */
+}
+
+button.cancel-button:hover {
+    background-color: darkslategrey; /* Slightly darker red on hover */
+}
+
+/* Ensure buttons are spaced appropriately in the form */
+form > button {
+    margin-top: 20px; /* Space above the buttons */
+}

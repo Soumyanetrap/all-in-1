@@ -1,0 +1,70 @@
+/* Container for the sign-up form */
+.SignUp-container {
+width: 100%;
+max-width: 400px; /* Maximum width for the form container */
+margin: 0 auto; /* Center the container horizontally */
+padding: 20px;
+border: 1px solid #ddd; /* Light border around the container */
+border-radius: 8px; /* Rounded corners */
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+background-color: #f9f9f9; /* Light background color */
+}
+
+/* Title styling */
+.SignUp-title {
+text-align: center; /* Center-align the title */
+margin-bottom: 20px; /* Space below the title */
+color: #333; /* Dark text color for better readability */
+font-family: Arial, sans-serif; /* Font family for the title */
+font-size: 24px; /* Larger font size for the title */
+}
+
+/* Form styling */
+.SignUp-form {
+width: 100%;
+border-collapse: collapse; /* Ensure borders between cells collapse */
+}
+
+.SignUp-table{
+width: 100%;
+}
+.SignUp-form th, .SignUp-form td {
+padding: 10px; /* Add padding inside table cells */
+border: 1px solid #ddd; /* Light border for the cells */
+}
+
+.SignUp-form th {
+text-align: left; /* Align text in header cells to the left */
+background-color: #e9e9e9; /* Slightly darker background for headers */
+}
+
+.SignUp-form td {
+text-align: left; /* Align text in data cells to the left */
+}
+
+.SignUp-form input[type="text"], 
+.SignUp-form input[type="email"], 
+.SignUp-form input[type="password"] {
+width: 100%; /* Full width for the input fields */
+padding: 8px; /* Padding inside input fields */
+border: 1px solid #ccc; /* Light border around input fields */
+border-radius: 4px; /* Rounded corners for input fields */
+box-sizing: border-box; /* Include padding and border in element’s total width and height */
+}
+
+.SignUp-form button {
+width: 100%; /* Full width for the button */
+padding: 10px; /* Padding inside the button */
+border: none; /* Remove default border */
+border-radius: 4px; /* Rounded corners */
+background-color: #4CAF50; /* Green background color */
+color: white; /* White text color */
+font-size: 16px; /* Font size for the button text */
+cursor: pointer; /* Pointer cursor on hover */
+margin-top: 10px; /* Space above the button */
+}
+
+.SignUp-form button:hover {
+background-color: #45a049; /* Slightly darker green on hover */
+}
+

@@ -1,0 +1,194 @@
+.create-group-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.create-group-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.create-group-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.create-group-content input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.create-group-content .people-list {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.create-group-content .people-list h3 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.create-group-content .people-list div {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.create-group-content .people-list input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.create-group-content button {
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 5px;
+    display: inline-block;
+}
+
+.create-group-content .submit-button {
+    background: #007bff;
+    width: 75%; /* Adjust width as needed */
+}
+
+.create-group-content .submit-button:hover {
+    background: #0056b3;
+}
+
+.create-group-content .cancel-button {
+    background: #6c757d;
+}
+
+.create-group-content .cancel-button:hover {
+    background: #5a6268;
+}
+
+.create-group-content .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.create-group-content .close-icon:hover {
+    color: #666;
+}
+
+
+.popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.popup-content .people-list {
+    margin-bottom: 20px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.popup-content .people-list h5 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.popup-content .people-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content .people-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-content .people-list .friend-name {
+    font-size: 1rem;
+    color: #555;
+}
+
+.popup-content .selected-people {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.popup-content .selected-people h5 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.popup-content .selected-people ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content .selected-people li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-content .selected-people .friend-name {
+    font-size: 1rem;
+    color: #555;
+}
+
+.popup-content .selected-people{
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #dc3545; /* Red color for removal */
+    transition: color 0.3s ease;
+}
+

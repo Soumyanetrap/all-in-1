@@ -1,12 +1,11 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+.App-Main{
+  margin-top: 150px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -15,13 +14,23 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  max-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
   color: white;
+  margin-bottom: 20px;
+  
+  position: fixed; /* Fixes the header at the top of the viewport */
+  top: 0; /* Aligns the header to the top of the viewport */
+  left: 0; /* Aligns the header to the left of the viewport */
+  width: 100%; /* Makes the header span the full width of the viewport */
+  z-index: 1000; /* Ensures the header stays above other content */
+}
+
+.App-header h1{
+  padding: 30px;
 }
 
 .App-link {

@@ -1,0 +1,214 @@
+.connection-main {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.connection-main section {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line if there isn’t enough space */
+    gap: 20px; /* Space between the boxes */
+    margin-bottom: 20px; /* Space below each section */
+}
+
+.box {
+    flex: 1 1 300px; /* Flex-grow, flex-shrink, and base width of 300px */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 5px; /* Optional: Add margin to space out the boxes */
+}
+
+/* Optional: To make the boxes responsive and fit nicely */
+@media (min-width: 768px) {
+    .box {
+        flex: 1 1 calc(50% - 10px); /* 2 boxes in a row, with space for the gap */
+    }
+}
+
+@media (min-width: 1024px) {
+    .box {
+        flex: 1 1 calc(33.33% - 20px); /* 3 boxes in a row for medium screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .box {
+        flex: 1 1 calc(25% - 20px); /* 4 boxes in a row for larger screens */
+    }
+}
+
+@media (min-width: 1600px) {
+    .box {
+        flex: 1 1 calc(20% - 20px); /* 5 boxes in a row for extra-large screens */
+    }
+}
+
+
+.container-grid {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.container-grid div{
+    margin-right: 25px;
+}
+
+.conn-buttons {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#make-group-btn{
+    background-color: rgb(110, 181, 3);
+}
+#add-people-btn:hover {
+    background-color: #0056b3;
+}
+
+#make-group-btn:hover {
+    background-color: green;
+}
+
+#search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+#dropdown li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.requested-connections-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.requested-connection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.requested-connection-item:last-child {
+    border-bottom: none;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.request-date {
+    font-size: 14px;
+    color: #555;
+}
+
+.connection-item {
+    display: flex;
+    justify-content: space-between; /* Space between the name and the icons */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.friend-name {
+    margin-right: 10px;
+}
+
+.status-icon {
+    display: flex;
+    align-items: center;
+}
+
+.tick-icon,
+.cross-icon,
+.exit-icon {
+    font-size: 18px; /* Adjust size as needed */
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease; /* Smooth transition for scaling effect */
+}
+
+.tick-icon {
+    color: green;
+}
+
+.cross-icon {
+    color: red;
+    margin-left: 20px; /* Increased space between the tick and cross */
+}
+
+.exit-icon {
+    color: blue; /* Change color as needed */
+    font-weight: bold;
+}
+
+.tick-icon:hover,
+.cross-icon:hover,
+.exit-icon:hover {
+    transform: scale(1.2); /* Slightly increase the font size on hover */
+}
+
+.tick-icon:hover::after,
+.cross-icon:hover::after,
+.exit-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+

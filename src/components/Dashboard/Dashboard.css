@@ -1,0 +1,85 @@
+.dashboard-sidebar {
+background-color: #f4f4f4;
+width: 200px;
+padding: 1rem;
+}
+
+.dashboard-sidebar nav ul {
+list-style: none;
+padding: 0;
+}
+
+.dashboard-sidebar nav ul li {
+margin-bottom: 0.5rem;
+}
+
+.dashboard-sidebar nav ul li a {
+text-decoration: none;
+color: #333;
+} 
+
+.dashboard-main {
+flex: 1;
+padding: 1rem;
+}
+
+.dashboard-main section {
+margin-bottom: 2rem;
+}
+
+.dashboard-main h2 {
+margin-top: 0;
+}
+
+.logout-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+} 
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.box h3 {
+    margin-top: 0;
+}
+
+#profile, #finance, #travel {
+    margin-bottom: 20px;
+}
+
+.box {
+    cursor: pointer; /* Changes cursor to pointer to indicate clickable area */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+.box:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+.box:active {
+    background-color: #ccc; /* Darker gray background when clicked */
+}

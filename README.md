@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Development Plan
+
+## Phase 2
+
+### Connections -> Groups
+* On Backend, bring a new column called admin_id in groups table
+* On clicking any group, a new page should open up that shows all the members of that group.
+* Options of adding/removing people should come up for admin
+* Option to change admin should come up for admin

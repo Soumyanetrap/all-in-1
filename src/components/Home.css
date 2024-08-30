@@ -1,0 +1,45 @@
+.Home-container{
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+/* Styling for the Home-toggle paragraph */
+.Home-toggle {
+  font-family: Arial, sans-serif; /* Font family for consistency */
+  font-size: 14px; /* Font size for the paragraph */
+  color: #333; /* Dark text color for readability */
+  text-align: center; /* Center-align the text */
+  margin: 20px 0; /* Space above and below the paragraph */
+}
+
+/* Styling for the button inside the Home-toggle paragraph */
+.Home-toggle button {
+  background-color: #4CAF50; /* Green background color */
+  color: white; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 5px 10px; /* Padding inside the button */
+  font-size: 14px; /* Font size for the button text */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 5px; /* Space between the text and the button */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background color and box shadow */
+}
+
+.Home-toggle button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.Home-toggle button:active {
+  background-color: #3e8e41; /* Even darker green when the button is pressed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Reduced shadow effect when pressed */
+}
+
+.Home-toggle button:disabled {
+  background-color: #b0b0b0; /* Gray background when the button is disabled */
+  cursor: not-allowed; /* Show a not-allowed cursor */
+  box-shadow: none; /* Remove shadow when disabled */
+}

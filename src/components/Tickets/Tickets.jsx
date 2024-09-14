@@ -43,12 +43,6 @@ const Tickets = () => {
             <Header username={username} />
 
             <main className="ticket-main">
-                <section>
-                    <div className="box">
-                        <h3>Tickets Overview</h3>
-                        <p>View and manage your financial information and reports here.</p>
-                    </div>
-                </section>
 
                 <section className="grid-container">
                     <section className="first-grid-container">
@@ -62,7 +56,7 @@ const Tickets = () => {
                         <p>Resolve</p>
                         <section className="second-grid-container">
                             <div className="grid-item" onClick={() => handleItemClick('pending')}>Pending Tickets</div>
-                            <div className="grid-item" onClick={() => handleItemClick('resolved')}>Resolved Requests</div>
+                            <div className="grid-item" onClick={() => handleItemClick('resolved')}>Resolved Tickets</div>
                         </section>
                     </section>
                  </section>
@@ -75,3 +69,11 @@ const Tickets = () => {
 };
 
 export default Tickets;
+
+
+// <section>
+//     <div className="box">
+//         <h3>Tickets Overview</h3>
+//         <p>View and manage your financial information and reports here.</p>
+//     </div>
+// </section>

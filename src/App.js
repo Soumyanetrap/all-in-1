@@ -10,6 +10,9 @@ import RaiseTickets from './components/Raise_Tickets/RaiseTickets';
 import Connections from './components/Connections/Connections';
 import PendingRequests from './components/Pending_Requests/PendingRequests';
 import './App.css'; 
+import PendingTickets from './components/PendingTickets/PendingTickets';
+import ResolveRequests from './components/Resolved_Requests/ResolveRequests';
+import ResolvedTickets from './components/Resolved_Tickets/ResolvedTickets';
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
             <Route path="/tickets" element={<Tickets />} />
             <Route path="/iraise" element={<RaiseTickets />} />
             <Route path="/ipending" element={<PendingRequests />} />
+            <Route path="/iresolved" element={<ResolveRequests />} />
+            <Route path="/pending" element={<PendingTickets />} />
+            <Route path="/resolved" element={<ResolvedTickets />} />
           </Routes>
         </Router>
       </main>

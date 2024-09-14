@@ -78,3 +78,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 * On clicking any group, a new page should open up that shows all the members of that group.
 * Options of adding/removing people should come up for admin
 * Option to change admin should come up for admin
+
+
+### Tickets
+* Replace the remarks column with chats(this will allow both person involved in the ticket to chat)
+* Change the front-end accordingly
+* Generate a Ticket Overview(Numbers related to peding, raised resquests ect.)

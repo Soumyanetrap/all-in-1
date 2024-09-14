@@ -5,6 +5,7 @@ import ConnectionsContainer from './ConnectionsContainer';
 
 const Connections = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
+    const wsUrl = process.env.REACT_APP_WEBSOCKET_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = React.useState('');
     const [admin_id, setAdminid] = React.useState(null);
@@ -27,10 +28,15 @@ const Connections = () => {
     const [groupName, setGroupName] = React.useState("");
     const [srcConnections, setSrcConnections] = React.useState([]);
     const [showChgAdminPopup, setShowChgAdminPopup] = React.useState(false);
+    const [ws, setWebsocket] = React.useState()
     // const [resolvePromise, setResolvePromise] = React.useState(null);
     const adminIdRef = React.useRef(admin_id);
 
-    
+    // const [data, setData] = React.useState(null);
+    React.useEffect(() => {
+        const websocket = new WebSocket(wsUrl);
+        setWebsocket(websocket)
+    }, [wsUrl])
 
     const handleCreateGroupClick = () => {
         setShowCreateGroupPopup(true);
@@ -203,6 +209,24 @@ const Connections = () => {
         }
     }, [apiUrl, user_id]);
 
+    React.useEffect(() => {
+        if (ws) {
+            ws.onopen = () => {
+                console.log('Connected to WebSocket server');
+            };
+        
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                if (message.type === 'req_con_update') {
+                    // console.log('Update received:', message.message);
+                    fetchRequestedConnections()
+                    handleConnections()
+                    // setData(message.message); // Update the state with new data
+                }
+            };
+        }
+    }, [ws, fetchRequestedConnections, handleConnections]);
+
     const fetchRelatedPeople = async (selectedValue) => {
         try {
             const response = await fetch(`${apiUrl}/connections/src_people`, {
@@ -329,15 +353,14 @@ const Connections = () => {
                 const rows = await fetchRelatedPeople(selectedValue);
 
                 // Apply filtering based on whether requestedConnections has items
-                const filteredRows = requestedConnections.length > 0
-                    ? rows.filter(row => 
+                    const filteredRows = rows.filter(row => 
                         row.username !== username &&  // Exclude the current user
-                        !requestedConnections.some(conn => conn.username === row.username)  // Exclude already requested connections
-                    )
-                    : rows.filter(row => 
-                        row.username !== username  // Only exclude the current user if requestedConnections is empty
+                        (requestedConnections.length === 0 || 
+                         !requestedConnections.some(conn => conn.username === row.username)) &&  // Exclude already requested connections if the list is non-empty
+                        (connections.length === 0 || 
+                         !connections.some(conn => conn.username === row.username))  // Exclude connections if the list is non-empty
                     );
-
+                    
 
                 // Map the filtered rows to user options
                 const userOptions = filteredRows.map(row => ({
@@ -576,6 +599,8 @@ const getMembers = React.useCallback(async (group_id) => {
     }, [admin_id]);
 
     const handleBackClick = () => {
+        if(ws)
+            ws.close()
         navigate('/dashboard');
     };
 

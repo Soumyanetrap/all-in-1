@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PendingRequests.css'; // Import your custom styles if needed
+import './ResolveRequests.css'; // Import your custom styles if needed
 import Header from '../Header/Header';
 import TicketDetails from '../Ticket_Details/TicketDetails'; // Import the TicketDetails component
 
-const PendingRequests = () => {
+const ResolveRequests = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = useState('');
@@ -27,7 +27,7 @@ const PendingRequests = () => {
 
             if (Array.isArray(data)) {
                 const filteredTickets = data.filter(ticket => 
-                    ticket.status === 'New' || ticket.status === 'In Progress'
+                    ticket.status === 'Resolved' || ticket.status === 'Declined'
                 );
                 setTickets(filteredTickets);
             } else {
@@ -73,46 +73,6 @@ const PendingRequests = () => {
         setSelectedTicket(null);
     };
 
-    const handleStatusChange = async (ticket_id, allUpdates) => {
-        const { status } = allUpdates;
-
-        try {
-            let response;
-            if (status === 'Resolved') {
-                response = await fetch(`${apiUrl}/ticket/resolve`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        ticket_id,
-                        ...allUpdates,
-                        authKey
-                    }),
-                });
-            } else if (status === 'Declined') {
-                response = await fetch(`${apiUrl}/ticket/declined`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        ticket_id,
-                        ...allUpdates,
-                        authKey
-                    }),
-                });
-            }
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-        } catch (error) {
-            console.error('Error handling status change:', error);
-        }
-    }
-
     return (
         <div className="ipending">
             <Header username={username} />
@@ -122,8 +82,7 @@ const PendingRequests = () => {
                     <TicketDetails 
                         ticket={selectedTicket} 
                         onClose={handleCloseDetails} 
-                        onStatusChange={handleStatusChange}
-                        editable={true} // Make ticket details non-editable
+                        editable={false} // Make ticket details non-editable
                     />
                 ) : (
                     <ul>
@@ -155,4 +114,4 @@ const PendingRequests = () => {
     );
 };
 
-export default PendingRequests;
+export default ResolveRequests;

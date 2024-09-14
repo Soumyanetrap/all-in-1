@@ -1,0 +1,79 @@
+/* TicketSections.css */
+.ticket-section {
+    margin-bottom: 20px;
+    width: calc(100% - 20px); /* Adjust width to account for left and right margins */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.section-header {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.2s ease, border-bottom 0.2s ease; /* Add transition for background color and border */
+}
+
+.section-header.active {
+    border-bottom: 3px solid #333; /* Dark bottom border for active section */
+    background-color: #e0e0e0; /* Slightly darker background for active section */
+}
+
+.section-content {
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding 0.3s ease; /* Smooth transition for max-height and padding */
+    max-height: 0; /* Initially collapsed */
+    width: 100%;
+    padding: 0 15px; /* Added padding to create space */
+}
+
+.section-content.show {
+    max-height: 100%; /* Large enough to show all content */
+    padding: 15px; /* Add padding when expanded */
+}
+
+.show ul {
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    display: flex; /* Make sure the ul is a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.tickets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background-color transition */
+    width: 100%; /* Ensure it fills the width of the container */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.tickets:hover {
+    background-color: #f9f9f9; /* Change background color on hover */
+}
+
+.subject {
+    font-weight: bold;
+}
+
+.status {
+    color: #666;
+}

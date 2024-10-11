@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './SignUp.css'; // Import the CSS file for styling
+import {REACT_APP_API_URL, REACT_APP_SESSION_DURATION_MINS} from '../../config'
+
 
 const SignUp = () => {
-  const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from environment variables
+  const apiUrl = REACT_APP_API_URL; // Get API URL from environment variables
   const navigate = useNavigate(); // React Router hook for navigation
 
   // State variables
@@ -77,7 +79,7 @@ const SignUp = () => {
           if (data.message === 'success') {
 
             //Write the details to the database
-            const expirationTime = new Date().getTime() + process.env.REACT_APP_SESSION_DURATION_MINS * 60 * 1000;
+            const expirationTime = new Date().getTime() + REACT_APP_SESSION_DURATION_MINS * 60 * 1000;
 
             // navigate('/dashboard'); // Navigate on successful sign-up
             localStorage.setItem('authState', JSON.stringify({ user_id:data.user_id ,username:userData.username, email:userData.email, flag:true, auth_key:data.auth_key, expirationTime }));

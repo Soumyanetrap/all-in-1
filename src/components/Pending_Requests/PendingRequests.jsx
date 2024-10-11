@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import {REACT_APP_API_URL} from '../../config'
 import { useNavigate } from 'react-router-dom';
 import './PendingRequests.css'; // Import your custom styles if needed
 import Header from '../Header/Header';
 import TicketDetails from '../Ticket_Details/TicketDetails'; // Import the TicketDetails component
 
 const PendingRequests = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = REACT_APP_API_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = useState('');
     const [username, setUsername] = useState('');

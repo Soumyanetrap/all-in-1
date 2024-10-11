@@ -1,0 +1,209 @@
+/* General Styles */
+.trips {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.trips-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure that the close button is positioned relative to this container */
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.trips-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Styles */
+.trip-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    /* margin-bottom: 5px; */
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Flexbox Layout for Groups */
+@media (min-width: 600px) {
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .form-row .form-group {
+        flex: 1;
+        min-width: 200px; /* Adjust as needed */
+    }
+
+    .form-group-half {
+        flex: 1;
+        min-width: 48%; /* Adjust as needed */
+    }
+
+    .form-group-quarter {
+        flex: 1;
+        min-width: 22%; /* Adjust as needed */
+    }
+}
+
+/* Submit Button Styles */
+.create-button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green background color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.2s ease; /* Smooth background color transition */
+}
+
+.create-button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+
+
+/* Search Input Styles */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.search-results {
+    margin-top: 5px;
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.search-results li {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically centered */
+    justify-content: space-between; /* Space out items to be at the ends */
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable items */
+    transition: background-color 0.2s ease; /* Smooth background color transition */
+}
+
+.search-results li:hover {
+    background-color: #f1f1f1; /* Change background color on hover */
+}
+
+/* Traveller Selection Icon */
+.tick-icon {
+    color: green;
+    font-size: 18px; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Smooth transition for scaling effect */
+}
+
+.tick-icon:hover {
+    transform: scale(1.2); /* Slightly increase the font size on hover */
+}
+
+.tick-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+/* File Input Styles */
+.file-input-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.file-input-button {
+    display: inline-block;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.attachments-preview {
+    margin-top: 15px;
+}
+
+.attachment-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.attachment-preview a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.9rem;
+}
+
+.attachment-preview input {
+    width: auto;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.attachment-delete-icon {
+    color: red;
+    cursor: pointer;
+    font-size: 1.2rem;
+}

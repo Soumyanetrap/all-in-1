@@ -3,9 +3,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignIn.css'; // Import the CSS file for styling
+import {REACT_APP_API_URL, REACT_APP_SESSION_DURATION_MINS} from '../../config'
+
 
 const SignIn = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = REACT_APP_API_URL;
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
   const navigate = useNavigate(); // React Router hook for navigation
@@ -52,7 +54,7 @@ const SignIn = () => {
       // Check the response status or content and navigate accordingly
       if (data.message === 'success') {
         // Navigate to another page on successful login
-        const expirationTime = new Date().getTime() + process.env.REACT_APP_SESSION_DURATION_MINS * 60 * 1000;
+        const expirationTime = new Date().getTime() + REACT_APP_SESSION_DURATION_MINS * 60 * 1000;
 
         // Store state and expiration time in localStorage
         localStorage.setItem('authState', JSON.stringify({ user_id:data.user_id, username:cred.username, email:data.email, flag: true, auth_key:data.auth_key, expirationTime }));

@@ -1,0 +1,101 @@
+/* Base style for chat messages */
+.reply-message {
+    background-color: #f0f4c3; /* Light green for reply messages */
+    border-left: 4px solid #c0ca33; /* Green left border */
+    padding: 8px;
+    margin: 0 0 10px 0; /* Space below the reply message */
+    border-radius: 4px;
+    font-size: 0.9em; /* Slightly smaller font size */
+    color: #555; /* Darker text color for reply */
+    font-size: 0.8em; /* Smaller font size */ 
+}
+
+.chat-message {
+    margin: 5px 0;
+    min-width: 60%; /* Limit the width of messages */
+    max-width: 70%;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    padding: 5px; /* Padding for messages */
+    position: relative; /* Required for positioning the bubble */
+}
+
+.chat-message strong {
+    margin: 0px;
+}
+
+.chat-message pre{
+    margin: 0px;
+    margin-top: 5px
+}
+
+/* Style for sent messages */
+.sent {
+    background-color: #dcf8c6; /* Light green background for sent messages */
+    align-self: flex-end; /* Align sent messages to the right */
+}
+
+/* Style for received messages */
+.received {
+    background-color: #ffffff; /* White background for received messages */
+    align-self: flex-start; /* Align received messages to the left */
+}
+
+.message-content {
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center align items vertically */
+}
+
+.username {
+    margin-right: 5px; /* Space between username and button */
+}
+
+.toggle-menu {
+    background: transparent; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 12px; /* Smaller font size for the arrow */
+    margin-left: 5px; /* Space between username and button */
+    padding: 0; /* Remove padding */
+    line-height: 1; /* Adjust line height for better alignment */
+    width: 20px; /* Fixed width for the button */
+    height: 20px; /* Fixed height for the button */
+}
+
+.context-menu {
+    position: absolute;
+    right: 0; /* Aligns the menu to the right */
+    background: white; /* Simple background color */
+    border: 1px solid #ccc; /* Simple border */
+    border-radius: 3px; /* Slightly rounded corners */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure it is above other elements */
+    opacity: 0; /* Start with hidden opacity */
+    transform: translateY(-10px); /* Start slightly above */
+    transition: opacity 0.2s ease, transform 0.2s ease; /* Transition for opacity and transform */
+    visibility: hidden; /* Hide the menu by default */
+}
+
+.context-menu.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide down to original position */
+    visibility: visible; /* Ensure it is visible */
+}
+
+.context-menu ul {
+    list-style: none; /* Remove bullets */
+    padding: 5px; /* Padding around the list */
+    margin: 0; /* Remove default margin */
+}
+
+.context-menu li {
+    padding: 4px 8px; /* Smaller padding for items */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 12px; /* Smaller font size */
+    border: none;
+    background: transparent;
+}
+
+.context-menu li:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}

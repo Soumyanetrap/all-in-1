@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import './ResolvedTickets.css'; // Import your custom styles if needed
 import Header from '../Header/Header';
 import TicketDetails from '../Ticket_Details/TicketDetails'; // Import the TicketDetails component
+import {REACT_APP_API_URL} from '../../config'
+
 
 const ResolvedTickets = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = REACT_APP_API_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = useState('');
     const [username, setUsername] = useState('');

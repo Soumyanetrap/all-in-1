@@ -1,0 +1,78 @@
+/* General Styles */
+.trips {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.uc-trips-main {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure that the close button is positioned relative to this container */
+}
+
+.uc-trips-main h1 {
+    width: 100%;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.trips-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search-trips {
+    width: 100%; /* Full width */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center contents horizontally */
+}
+
+.search-results {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit the width */
+    margin: 0; /* Remove default margins */
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.search-results li {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically centered */
+    justify-content: space-between; /* Space out items to be at the ends */
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable items */
+    transition: background-color 0.2s ease; /* Smooth background color transition */
+}
+
+.search-results li:hover {
+    background-color: #f1f1f1; /* Change background color on hover */
+}
+
+.trip-name {
+    font-weight: bold; /* Make trip name bold */
+    font-size: 1.2rem; /* Increase font size for emphasis */
+}
+
+.trip-route {
+    font-size: 1rem; /* Regular size for route */
+}
+
+.arrow {
+    margin: 0 5px; /* Add some space around the arrow */
+    font-size: 1.2rem; /* Increase the size of the arrow */
+    color: #555; /* Optional: Change arrow color */
+}

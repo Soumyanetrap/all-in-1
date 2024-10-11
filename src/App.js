@@ -13,6 +13,11 @@ import './App.css';
 import PendingTickets from './components/PendingTickets/PendingTickets';
 import ResolveRequests from './components/Resolved_Requests/ResolveRequests';
 import ResolvedTickets from './components/Resolved_Tickets/ResolvedTickets';
+import Travel from './components/Travel/Travel';
+import Trips from './components/Trip/Trips';
+import PlanTrips from './components/Plan_Trips/PlanTrips';
+import UcTrips from './components/Uc_Trips/UcTrips';
+import TripContainer from './components/Trip_Container/TripContainer';
 
 const App = () => {
   return (
@@ -35,6 +40,11 @@ const App = () => {
             <Route path="/iresolved" element={<ResolveRequests />} />
             <Route path="/pending" element={<PendingTickets />} />
             <Route path="/resolved" element={<ResolvedTickets />} />
+            <Route path="/travel" element={<Travel />} />
+            <Route path="/trips" element={<Trips />} />
+            <Route path="/plan_trip" element={<PlanTrips />} />
+            <Route path="/uc_trips" element={<UcTrips />} />
+            <Route path="/trip_container" element={<TripContainer />} />
           </Routes>
         </Router>
       </main>

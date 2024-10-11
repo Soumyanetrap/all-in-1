@@ -1,0 +1,92 @@
+.trip-chat {
+    width: 100%;
+}
+
+.reply-message-preview {
+    background-color: #e1f5fe; /* Light blue background */
+    border: 1px solid #90caf9; /* Border color */
+    border-radius: 4px;
+    padding: 5px;
+    justify-content: space-between; 
+    display: flex;
+}
+
+/* .reply-message-preview {
+   
+    align-items: center; /* Align items vertically centered 
+}
+ */
+
+.cancel-reply {
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
+    color: rgb(0, 0, 255); /* Red color for the cross */
+    font-size: 20px; /* Size of the cross */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: 8px; /* Space between content and the cross */
+}
+
+
+.reply-message-preview pre {
+    margin: 0px;
+}
+
+.chat-trips-title {
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 30vh;
+    max-height: 60vh; /* Set max height to the viewport height */
+    height: 100%; /* Allow it to fill available space */
+}
+
+.all-chats {
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    scrollbar-width: none; /* For Firefox */
+    margin-bottom: 10px;
+    max-height: 400px; /* Set a max height to enable scrolling */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.all-chats::-webkit-scrollbar {
+    display: none; 
+}
+
+.send-chat {
+    display: flex;
+    align-items: center;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0 10px 10px; /* Top: 0, Right: 10px, Bottom: 10px, Left: 10px */
+    margin: 0px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.send-button {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

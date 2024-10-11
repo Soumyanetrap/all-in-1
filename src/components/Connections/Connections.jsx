@@ -1,11 +1,12 @@
 // Connections.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {REACT_APP_API_URL, REACT_APP_WEBSOCKET_URL} from '../../config'
 import ConnectionsContainer from './ConnectionsContainer';
 
 const Connections = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-    const wsUrl = process.env.REACT_APP_WEBSOCKET_URL;
+    const apiUrl = REACT_APP_API_URL;
+    const wsUrl = REACT_APP_WEBSOCKET_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = React.useState('');
     const [admin_id, setAdminid] = React.useState(null);

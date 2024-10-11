@@ -1,0 +1,95 @@
+.trip-details {
+    padding-top: 25px;
+    width: 100%;
+}
+
+.uc-trips-main {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.info-item{
+    padding-top: 15px;
+}
+
+/* General styles for input fields */
+input[type="text"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff; /* Change to your theme's primary color */
+    outline: none; /* Remove default outline */
+}
+
+/* Styles for the select dropdown */
+select {
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007bff"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Adjust arrow position */
+    background-size: 12px;
+}
+
+/* Textarea specific styles */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px; /* Minimum height for text area */
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 0.875em; /* Slightly smaller font for error messages */
+}
+
+/* Styles for buttons */
+.create-button {
+    background-color: #007bff; /* Your theme's primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Styles for file input label */
+.file-input-label {
+    display: inline-block;
+    background-color: #3f96ee; /* Change to a light grey background */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.file-input-label:hover {
+    background-color: #0f569c; /* Change to a slightly darker grey on hover */
+}
+
+/* Styles for existing files section */
+.existing-files-preview {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 10px;
+}

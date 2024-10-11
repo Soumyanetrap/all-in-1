@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RaiseTickets.css'; // Import your custom styles if needed
 import Header from '../Header/Header';
+import {REACT_APP_API_URL} from '../../config'
+
 
 const RaiseTickets = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = REACT_APP_API_URL;
     const navigate = useNavigate();
     const [user_id, setUserid] = useState('');
     const [username, setUsername] = useState('');

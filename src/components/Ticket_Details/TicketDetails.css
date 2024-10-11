@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box; /* Apply universally */
+}
 /* Main Container */
 .ticket-details-container {
     display: flex;

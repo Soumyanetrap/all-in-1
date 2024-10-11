@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Add_Accounts.css'; // Import your custom styles if needed
-import decrypt from '../../utils/decryptor';
+import {REACT_APP_API_URL, REACT_APP_MASTER_KEY} from '../../config'
+import {decrypt} from '../../utils/decryptor';
 import Header from '../Header/Header';
 
 const AddAccount = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = REACT_APP_API_URL;
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [user_id, setUserID] = useState('');
@@ -37,7 +38,7 @@ const AddAccount = () => {
                 throw new Error('Failed to fetch accounts');
             }
             const data = await response.json();
-            const masterKey = process.env.REACT_APP_MASTER_KEY
+            const masterKey = REACT_APP_MASTER_KEY
             // Decrypt balances
             const decryptedAccounts = data.map(account => {
                 // Ensure `account.iv` and `account.encryptedBalance` are correctly named based on your data

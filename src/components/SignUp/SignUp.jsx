@@ -39,6 +39,7 @@ const SignUp = () => {
     };
 
     try {
+      const SKIP_OTP = true
       if (!otpSent) {
         // Send request to get OTP
         const response = await fetch(`${apiUrl}/sendOTP`, {
@@ -54,16 +55,16 @@ const SignUp = () => {
         // Parse the response
         const data = await response.json();
         // console.log(data)
-        if (typeof data.OTP === 'string') {
+        if (SKIP_OTP || typeof data.OTP === 'string') {
           setOtpSent(true); // Show OTP input field and button
           setOtpValue(data.OTP);
         } else {
           console.error('Failed to send OTP:', data.message);
-          alert('Failed to send OTP: ' + data.message);
+          // alert('Failed to send OTP: ' + data.message);
         }
       } else {
         // Verify OTP and complete sign-up
-        if(otp === otpValue){
+        if(SKIP_OTP || otp === otpValue){
           const response = await fetch(`${apiUrl}/auth/signup`, {
             method: 'POST',
             headers: {

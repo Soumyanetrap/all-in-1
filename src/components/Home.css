@@ -1,9 +1,17 @@
-.Home-container{
+.Home-container {
   width: 50%;
   margin-left: 25%;
   text-align: center;
   border: 2px solid black;
   border-radius: 5px;
+}
+
+/* Media query for screens smaller than 400px */
+@media (max-width: 400px) {
+  .Home-container {
+    width: 100%; /* Set width to 100% */
+    margin-left: 0; /* Remove margin for full-width display */
+  }
 }
 
 /* Styling for the Home-toggle paragraph */

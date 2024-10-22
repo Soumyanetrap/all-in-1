@@ -1,6 +1,4 @@
-/* Trips.css */
-
-.trips {
+.vacation {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +7,7 @@
     font-family: Arial, sans-serif;
 }
 
-.trips-main {
+.vacation-main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,25 +21,31 @@
     margin-top: 30px;
 }
 
-.trips-main h2{
-    margin-top: 0px;
-    margin_bottom: 5px;
-}
-
-.trips-title {
+.vacation-title {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
 }
 
-.options-container {
+.close-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.vacation-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
 }
 
-.option-item {
+.vacation-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,17 +60,7 @@
     color: #333;
 }
 
-.option-item:hover {
+.vacation-item:hover {
     background-color: #f0f0f0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.option-icon {
-    font-size: 2rem;
-    margin-right: 15px;
-    color: #007bff; /* Optional: Customize icon color */
-}
-
-.option-text {
-    font-size: 1.2rem;
 }

@@ -41,7 +41,7 @@ const TripChat = ({ trip, onWsOpen, showChat }) => {
 
     // WebSocket setup
     useEffect(() => {
-        const websocket = new WebSocket(wsUrl + `?trip_id=${trip.trip_id}`);
+        const websocket = new WebSocket(wsUrl+`?trip_id=${trip.trip_id}`);
         setWebsocket(websocket);
     }, [wsUrl, trip.trip_id]);
     
@@ -57,8 +57,10 @@ const TripChat = ({ trip, onWsOpen, showChat }) => {
             ws.onmessage = (event) => {
                 try {
                     const message = JSON.parse(event.data);
-                    if (message.type === 'new_chat') {
-                        const inner = JSON.parse(message.message);
+                    if (message.action === 'new_chat') {
+                        // const inner = JSON.parse(message.payload);
+                        // console.log(typeof (message.payload))
+                        const inner = message.payload
                         const newMessage = {
                             trp_msg_id: inner.trp_msg_id,
                             trip_id: inner.trip_id,

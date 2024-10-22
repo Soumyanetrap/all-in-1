@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div className="Home-container">
-      <h1 className="Home-title">Manage Everything at One Place</h1>
+      <h1 className="Home-title">Track Everything From One Place</h1>
       {showSignIn ? (
         <div className="Home-form">
           <SignIn />

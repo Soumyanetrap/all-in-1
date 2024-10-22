@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import './PlanTrips.css'; // Import custom styles
+import { useNavigate } from 'react-router-dom';
+import './PlanVacation.css'; // Import custom styles
 import Header from '../Header/Header';
 import useTravelPartnersFetcher from '../Trips_Partner_Fetcher/TripPartnerFetcher'
-import { FaBus, FaTrain, FaPlane } from 'react-icons/fa'; // Icons for travel modes
-import AttachmentsPreview from '../Drive_Files/PreviewFiles';
-import useFileHandler from '../Drive_Files/HandleFiles'
 import {REACT_APP_API_URL} from '../../config'
 
 
-const PlanTrips = () => {
-    const location = useLocation();
-    const { vacation } = location.state || {}; // Safe access
+const PlanVacation = () => {
     const apiUrl = REACT_APP_API_URL;
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
@@ -19,23 +14,19 @@ const PlanTrips = () => {
     const [user_id, setUserid] = useState('');
     const [traveller, setTravellers] = useState(null);
     const [filteredTravellers, setFilteredTravellers] = useState([]);
-    const [error, setError] = useState('');
     const [formData, setFormData] = useState({
-        trip_name: '',
+        vacation_name: '',
         from_dest: '',
         to_dest: '',
         dept_date: '',
         arv_date: '',
-        trip_with: 'Self', // Default value
-        mode: 'Bus',
+        vacation_with: 'Self', // Default value
         notes: '',
         searchQuery: '' // Add a state for the search query
     });
     const [minDepartureTime, setMinDepartureTime] = useState('');
     const [minArrivalTime, setMinArrivalTime] = useState('');
     const [isSelectingTraveller, setIsSelectingTraveller] = useState(false);
-    const [attachments, setAttachments] = useState([]);
-    const [fileNames, setFileNames] = useState([]);
 
     useEffect(() => {
         // Set the minimum departure time to the current date and time
@@ -77,22 +68,22 @@ const PlanTrips = () => {
     const fetchTravelPartners = useTravelPartnersFetcher(apiUrl,user_id,setTravellers)
 
     useEffect(() => {
-        // Reset searchQuery and filteredTravellers whenever trip_with changes
+        // Reset searchQuery and filteredTravellers whenever vacation_with changes
         setFormData(prevFormData => ({
             ...prevFormData,
             searchQuery: ''
         }));
         setFilteredTravellers([]);
 
-        // Fetch travel partners based on the new trip_with value
-        if (formData.trip_with === 'Group') {
+        // Fetch travel partners based on the new vacation_with value
+        if (formData.vacation_with === 'Group') {
             fetchTravelPartners('connections/get_groups');
-        } else if (formData.trip_with === 'Behalf') {
+        } else if (formData.vacation_with === 'Behalf') {
             fetchTravelPartners('connections/get_con');
         } else {
             setFilteredTravellers([]);
         }
-    }, [formData.trip_with, fetchTravelPartners]);
+    }, [formData.vacation_with, fetchTravelPartners]);
 
     useEffect(() => {
         if (!isSelectingTraveller) {
@@ -103,9 +94,9 @@ const PlanTrips = () => {
                     const filtered = traveller.filter((item) => {
                         const searchLower = formData.searchQuery.toLowerCase();
                         
-                        if (formData.trip_with === 'Group') {
+                        if (formData.vacation_with === 'Group') {
                             return item.group_name && item.group_name.toLowerCase().startsWith(searchLower);
-                        } else if (formData.trip_with === 'Behalf') {
+                        } else if (formData.vacation_with === 'Behalf') {
                             return item.username && item.username.toLowerCase().startsWith(searchLower);
                         } else {
                             return false;
@@ -117,7 +108,7 @@ const PlanTrips = () => {
                 setFilteredTravellers([]);
             }
         }
-    }, [formData.searchQuery, formData.trip_with, traveller, isSelectingTraveller]);
+    }, [formData.searchQuery, formData.vacation_with, traveller, isSelectingTraveller]);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -138,16 +129,16 @@ const PlanTrips = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
     
-        // Determine partner_id based on trip_with
-        const partner_id = formData.trip_with === 'Self' ? user_id : formData.partner_id;
+        // Determine partner_id based on vacation_with
+        const partner_id = formData.vacation_with === 'Self' ? user_id : formData.partner_id;
     
         // Create a new object for the request payload, excluding searchQuery
         const { searchQuery, ...payload } = formData;
         payload.auth_key = auth_key;
     
         try {
-            // Step 1: Send form data to create the trip
-            const response = await fetch(`${apiUrl}/trip/create_trip`, {
+            // Step 1: Send form data to create the vacation
+            const response = await fetch(`${apiUrl}/trip/create_vacation`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -162,65 +153,17 @@ const PlanTrips = () => {
                 throw new Error('Trip creation request failed');
             }
     
-            // Parse the response to get the trip_id
-            const trip_id  = await response.json();
+            // Parse the response to get the vacation_id
+            const vacation_id  = await response.json();
     
-            // Check if trip_id is an integer
-            if (!Number.isInteger(trip_id)) {
-                throw new Error('Invalid trip_id received from the server');
+            // Check if vacation_id is an integer
+            if (!Number.isInteger(vacation_id)) {
+                throw new Error('Invalid vacation_id received from the server');
             }
+            
+            alert("Vacation Successfully Planned")
     
-            // Step 2: Prepare and send the file upload request
-            if (attachments.length > 0) {
-                const formDataForUpload = new FormData();
-    
-                // Append the trip_id to the formData
-                formDataForUpload.append('trip_id', trip_id);
-                formDataForUpload.append('user_id', user_id);
-                formDataForUpload.append('auth_key', auth_key);
-    
-                // Append each file
-                attachments.forEach((file, index) => {
-                    formDataForUpload.append('files', file, `${fileNames[index] || trimExtension(file.name)}.${file.name.split('.').pop()}`);
-                });
-    
-                const uploadResponse = await fetch(`${apiUrl}/storage/uploadFile`, {
-                    method: 'POST',
-                    body: formDataForUpload,
-                });
-    
-                if (!uploadResponse.ok) {
-                    throw new Error('File upload failed');
-                }
-    
-                const id = await uploadResponse.json(); // Assuming you want to handle the response
-    
-                // Clear attachments and file names after upload
-                setAttachments([]);
-                setFileNames([]);
-                if(Number.isInteger(id))
-                    alert("Trip Successfully Planned")
-                else
-                    alert("Unsuccessful")
-            } else {
-                alert("Trip Successfully Planned")
-            }
-
-            if (vacation && Number.isInteger(trip_id)) {
-                const response = await fetch(`${apiUrl}/trip/vac_trip`,{
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        vacation_id: vacation.vacation_id, trip_id
-                    }),
-                })
-                
-                if (!response.ok) {
-                    throw new Error('File upload failed');
-                }
-            }
-    
-            handleCloseForm()
+            navigate('/vacation')
     
         } catch (e) {
             console.error('Error submitting form:', e);
@@ -228,10 +171,7 @@ const PlanTrips = () => {
     };
     
     const handleCloseForm = () => {
-        if(vacation)
-            navigate('/vacation_container', {state: {vacation}}); // Navigate to the home or appropriate page
-        else
-            navigate('/trips'); // Navigate to the home or appropriate page
+        navigate('/vacation'); // Navigate to the home or appropriate page
     };
 
     const handleTraveller = (selectedTraveller) => {
@@ -244,33 +184,22 @@ const PlanTrips = () => {
         setFilteredTravellers([]); // Clear the options list
     };
 
-    const {
-        trimExtension,
-        handleFileChange,
-        handleFileNameChange,
-        handleFileRemove,
-    } = useFileHandler(fileNames, setAttachments, setFileNames, setError);
-
     return (
-        <div className="trips">
+        <div className="vacation">
             <Header username={username} />
-            <main className="trips-main">
+            <main className="vacation-main">
                 <button className="close-button" onClick={handleCloseForm} title="Close Form">
                     ✘
                 </button>
-                {
-                    vacation && 
-                        <h2 className="trips-subtitle">Vacation: {vacation.vacation_name}</h2>
-                }
-                <h1 className="trips-title">Plan Your Trip</h1>
-                <form className="trip-form" onSubmit={handleSubmit}>
+                <h1 className="vacation-title">Plan Your Vacation</h1>
+                <form className="vacation-form" onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="trip_name">Trip Name</label>
+                        <label htmlFor="vacation_name">Vacation Name</label>
                         <input
                             type="text"
-                            id="trip_name"
-                            name="trip_name"
-                            value={formData.trip_name}
+                            id="vacation_name"
+                            name="vacation_name"
+                            value={formData.vacation_name}
                             onChange={handleChange}
                             required
                         />
@@ -329,11 +258,11 @@ const PlanTrips = () => {
                     </div>
                     <div className="form-row">
                         <div className="form-group form-group-quarter">
-                            <label htmlFor="trip_with">Travel With</label>
+                            <label htmlFor="vacation_with">Travel With</label>
                             <select
-                                id="trip_with"
-                                name="trip_with"
-                                value={formData.trip_with}
+                                id="vacation_with"
+                                name="vacation_with"
+                                value={formData.vacation_with}
                                 onChange={handleChange}
                             >
                                 <option value="Self">Self</option>
@@ -341,22 +270,8 @@ const PlanTrips = () => {
                                 <option value="Behalf">On Behalf Of</option>
                             </select>
                         </div>
-                        <div className="form-group form-group-quarter">
-                            <label htmlFor="mode">Travel Mode</label>
-                            <select
-                                id="mode"
-                                name="mode"
-                                value={formData.mode}
-                                onChange={handleChange}
-                            >
-                                <option value="Bus">Bus <FaBus /></option>
-                                <option value="Train">Train <FaTrain /></option>
-                                <option value="Flight">Flight <FaPlane /></option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
                     </div>
-                    {(formData.trip_with === 'Group' || formData.trip_with === 'Behalf') && (
+                    {(formData.vacation_with === 'Group' || formData.vacation_with === 'Behalf') && (
                         <div className="form-group">
                             <label htmlFor="searchQuery">Search</label>
                             <input
@@ -394,27 +309,6 @@ const PlanTrips = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="file-input-label">
-                            <input
-                                type="file"
-                                name="files"
-                                className="attachments-input"
-                                multiple
-                                accept=".png, .jpeg, .jpg, .pdf"
-                                onChange={handleFileChange}
-                            />
-                            <span className="file-input-button">Choose Files</span>
-                        </label>
-                        {error && <p className="error-message">{error}</p>}
-                        <AttachmentsPreview 
-                            attachments={attachments}
-                            fileNames={fileNames}
-                            editable={true}
-                            handleFileNameChange={handleFileNameChange}
-                            handleFileRemove={handleFileRemove}
-                        />
-                    </div>
                     <button type="submit" className="create-button">Create</button>
                 </form>
             </main>
@@ -422,4 +316,4 @@ const PlanTrips = () => {
     );
 };
 
-export default PlanTrips;
+export default PlanVacation;

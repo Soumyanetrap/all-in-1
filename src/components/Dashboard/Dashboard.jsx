@@ -1,45 +1,38 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
-import './Dashboard.css'; // Import your custom styles if needed
+import './Dashboard.css';
 
 const Dashboard = () => {
-    // const location = useLocation(); // Hook to access location object
-    const navigate = useNavigate(); // Hook to navigate programmatically
+    const navigate = useNavigate();
     const [username, setUsername] = React.useState('');
+    const [isSidebarOpen, setSidebarOpen] = React.useState(false); // State for sidebar visibility
 
     React.useEffect(() => {
-        // Retrieve state and expiration time from localStorage
         const storedState = localStorage.getItem('authState');
-        // console.log(storedState);
         if (storedState) {
             const { username, flag } = JSON.parse(storedState);
-            // const currentTime = new Date().getTime();
-
-            // Check if the state has expired
             if (!flag) {
-                // State has expired or flag is false; redirect to login
-                // console.log("Logging Out: Session Expired!")
-                localStorage.removeItem('authState'); // Clean up expired state
+                localStorage.removeItem('authState');
                 navigate('/');
-            }
-            else {
-            setUsername(username);
+            } else {
+                setUsername(username);
             }
         } else {
-            // No state found; redirect to login
             navigate('/');
         }
     }, [navigate]);
 
     const handleLogout = () => {
-        localStorage.removeItem('authState'); // Remove auth state from localStorage
-        navigate('/'); // Redirect to home page
+        localStorage.removeItem('authState');
+        navigate('/');
     };
 
-    // Define your function here
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen); // Toggle sidebar state
+    };
+
     const handleProfileClick = () => {
-        // console.log('Profile section clicked');
         navigate('/profile'); // Navigate to profile page
     };
 
@@ -53,26 +46,33 @@ const Dashboard = () => {
 
     const handleConnectClick = () => {
         navigate('/connect'); // Navigate to connect section
-    }
+    };
+
     const handleTicketClick = () => {
-        navigate('/tickets'); // Navigate to travel section
+        navigate('/tickets'); // Navigate to tickets section
     };
 
     return (
         <div className="dashboard">
             <Header username={username} />
-    
-            <div className="dashboard-container">
+            <button className="hamburger" onClick={toggleSidebar}>
+                &#9776; {/* Hamburger icon */}
+            </button>
+
+            <div className={`dashboard-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <aside className="dashboard-sidebar">
                     <nav>
                         <ul>
-                            <li><a href="#profile">Profile</a></li>
-                            <li><a href="#finance">Finance</a></li>
-                            <li><a href="#travel">Travel</a></li>
+                            <li onClick={handleProfileClick}>Profile</li>
+                            <li onClick={handleFinanceClick}>Finance</li>
+                            <li onClick={handleTravelClick}>Travel</li>
+                            <li onClick={handleConnectClick}>Connections</li>
+                            <li onClick={handleTicketClick}>Tickets</li>
+                            <li onClick={handleLogout}>Logout</li> {/* Logout as a menu item */}
                         </ul>
                     </nav>
                 </aside>
-    
+
                 <main className="dashboard-main">
                     <section id="profile">
                         <div className="box" onClick={handleProfileClick}>
@@ -110,12 +110,8 @@ const Dashboard = () => {
                     </section>
                 </main>
             </div>
-    
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
     );
-    
-    
 };
 
 export default Dashboard;

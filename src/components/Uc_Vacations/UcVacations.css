@@ -1,10 +1,10 @@
 /* General Styles */
-.trips {
+.vacations {
     font-family: Arial, sans-serif;
     padding: 20px;
 }
 
-.uc-trips-main {
+.uc-vacations-main {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -14,14 +14,8 @@
     position: relative; /* Ensure that the close button is positioned relative to this container */
 }
 
-.uc-trips-main h1 {
+.uc-vacations-main h1 {
     width: 100%;
-}
-
-.uc-trips-main h2{
-    /* margin-top: 0px;
-    margin_bottom: 5px; */
-    margin-left: 35%;
 }
 
 .close-button {
@@ -35,12 +29,12 @@
     right: 10px;
 }
 
-.trips-title {
+.vacations-title {
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.search-trips {
+.search-vacations {
     width: 100%; /* Full width */
     display: flex; /* Use flexbox */
     justify-content: center; /* Center contents horizontally */
@@ -68,12 +62,12 @@
     background-color: #f1f1f1; /* Change background color on hover */
 }
 
-.trip-name {
-    font-weight: bold; /* Make trip name bold */
+.vacation-name {
+    font-weight: bold; /* Make vacation name bold */
     font-size: 1.2rem; /* Increase font size for emphasis */
 }
 
-.trip-route {
+.vacation-route {
     font-size: 1rem; /* Regular size for route */
 }
 

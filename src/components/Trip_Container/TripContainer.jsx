@@ -32,7 +32,7 @@ const TripContainer = () => {
     const handleClose = () => {
         if (ws)
             ws.close();
-        navigate('/trips');
+        navigate(-1);
     };
 
     const toggleView = () => {

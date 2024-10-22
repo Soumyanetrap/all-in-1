@@ -168,7 +168,8 @@ const TripDetails = ({ trip, editable = true }) => {
             }
         }
         else {
-            alert("No New Changes to Update")
+            if (attachments.length < 0)
+                alert("No New Changes to Update")
         }
     
         try {
@@ -221,6 +222,10 @@ const TripDetails = ({ trip, editable = true }) => {
         }));
         setFilteredTravellers([]); // Clear the options list
     };
+
+    const handelCreateTicket = () => {
+        navigate(`/iraise?trip_id=${formData.trip_id}`);
+    }
 
     return (
         <div className="trip-details">
@@ -397,7 +402,7 @@ const TripDetails = ({ trip, editable = true }) => {
 
                     <button type="submit" className="create-button">Submit</button>
                 </form>
-
+                <button className="create-ticket-div" onClick={handelCreateTicket}>Raise Ticket</button>   
                 <div className="info-item">
                     <span className="info-label">Attached Files:</span>
                     <div className="existing-files-preview">

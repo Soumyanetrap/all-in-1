@@ -1,12 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaCalendarPlus, FaCalendarCheck, FaMapMarkerAlt } from 'react-icons/fa'; // Icons for the options
 import './Trips.css'; // Import custom styles if needed
 import Header from '../Header/Header';
 
 const Trips = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [username, setUsername] = React.useState('');
+    const vacation = location.state?.vacation; 
 
     React.useEffect(() => {
         // Retrieve state and expiration time from localStorage
@@ -35,10 +37,14 @@ const Trips = () => {
     }, [navigate]);
 
     const handleOptionClick = (option) => {
-        navigate(`/${option}`);
+        navigate(`/${option}`, { state: { vacation } });
     };
     const handleCloseForm = () => {
-        navigate('/travel'); // Navigate to the home or appropriate page
+
+        if(vacation)
+            navigate('/uc_vac');
+        else
+            navigate('/travel'); // Navigate to the home or appropriate page
     };
 
     return (
@@ -49,6 +55,10 @@ const Trips = () => {
                     ✘
                 </button>
                 <h1 className="trips-title">Manage Your Trips</h1>
+                {
+                    vacation && 
+                        <h2 className="trips-subtitle">Vacation: {vacation.vacation_name}</h2>
+                }
                 <section className="options-container">
                     <div className="option-item" onClick={() => handleOptionClick('plan_trip')}>
                         <div className="option-icon"><FaCalendarPlus /></div>
@@ -56,12 +66,18 @@ const Trips = () => {
                     </div>
                     <div className="option-item" onClick={() => handleOptionClick('uc_trips')}>
                         <div className="option-icon"><FaCalendarCheck /></div>
-                        <div className="option-text">See Upcoming Trips</div>
+                        {!vacation ? <div className="option-text">See Upcoming Trips</div> :
+                            <div className="option-text">Upcoming Trips</div>
+                        }
                     </div>
-                    <div className="option-item" onClick={() => handleOptionClick('past_trips')}>
-                        <div className="option-icon"><FaMapMarkerAlt /></div>
-                        <div className="option-text">See Where Have You Been</div>
-                    </div>
+                    {
+                        !vacation && 
+                        <div className="option-item" onClick={() => handleOptionClick('past_trips')}>
+                            <div className="option-icon"><FaMapMarkerAlt /></div>
+                            <div className="option-text">See Where Have You Been</div>
+                        </div>
+                    }
+                    
                 </section>
             </main>
         </div>
